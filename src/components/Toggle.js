@@ -42,6 +42,7 @@ const ToggleSelector = styled.ul`
   list-style: none;
   border-radius: 20px;
   background-color: rgb(235, 235, 235);
+  cursor: pointer;
 `;
 
 const ToggleItem = styled.li`

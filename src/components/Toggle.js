@@ -28,7 +28,7 @@ function Toggle({
               {item}
             </ToggleItem>
           ))}
-          <Circle position={isDetailSelected} />
+          <FocusCircle position={isDetailSelected} />
         </ToggleSelector>
       </Container>
     </>
@@ -36,10 +36,9 @@ function Toggle({
 }
 
 const ToggleSelector = styled.ul`
+  position: relative;
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  width: 300px;
+  justify-content: space-around;
   list-style: none;
   border-radius: 20px;
   background-color: rgb(235, 235, 235);
@@ -51,20 +50,19 @@ const ToggleItem = styled.li`
   color: ${({ isSelected }) => isSelected ? 'black' : 'gray'}
 `;
 
-const Circle = styled.div`
+const FocusCircle = styled.div`
   position: absolute;
-  // TODO: 수치 수정
-  top: 116px;
-  left: 192px;
+  top: 4px;
+  left: 8px;
   background-color: white;
-  width: 150px;
+  width: 142px;
   height: 28px;
   border-radius: 20px;
   transition: all 0.2s linear;
   ${({ position }) =>
     position &&
     css`
-      transform: translate(140px, 0);
+      transform: translate(142px, 0);
       transition: all 0.2s linear;
     `}
 `;

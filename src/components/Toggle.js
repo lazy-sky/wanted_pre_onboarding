@@ -1,31 +1,36 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-function Toggle() {
-  const [selectedToggleIndex, setSelectedToggleIndex] = useState(0);
+import { Container } from './Shape';
 
-  const toggleItems = ['기본', '상세'];
+function Toggle({
+  title,
+  items,
+  isDetail,
+}) {
+  const [isDetailSelected, setIsDetailSelected] = useState(isDetail);
 
   const handleClickToggle = () => {
-    setSelectedToggleIndex((prev) => Number(!prev));
+    setIsDetailSelected(prev => !prev);
   };
 
   return (
     <>
-      <h2>Toggle</h2>
-      <ToggleSelector>
-        <Circle position={selectedToggleIndex} />
-
-        {toggleItems.map((item, index) => (
-          <ToggleItem
-            key={item}
-            isSelected={selectedToggleIndex === index}
-            onClick={handleClickToggle}
-          >
-            {item}
-          </ToggleItem>
-        ))}
-      </ToggleSelector>
+      <h2>{title}</h2>
+      <Container>
+        <ToggleSelector>
+          {items.map((item, index) => (
+            <ToggleItem
+              key={item}
+              isSelected={isDetailSelected === Boolean(index)}
+              onClick={handleClickToggle}
+            >
+              {item}
+            </ToggleItem>
+          ))}
+          <Circle position={isDetailSelected} />
+        </ToggleSelector>
+      </Container>
     </>
   );
 }
@@ -43,12 +48,7 @@ const ToggleSelector = styled.ul`
 const ToggleItem = styled.li`
   z-index: 100;
   padding: 8px;
-  color: gray;
-  ${({ isSelected }) =>
-    isSelected &&
-    css`
-      color: black;
-    `}
+  color: ${({ isSelected }) => isSelected ? 'black' : 'gray'}
 `;
 
 const Circle = styled.div`

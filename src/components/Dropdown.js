@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Container } from './Shape';
 
-function Dropdown({ items, currentItem }) {
+function Dropdown({ title, items, currentItem }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedText, setSelectedText] = useState(currentItem);
   const [searchText, setSearchText] = useState('');
@@ -25,32 +25,35 @@ function Dropdown({ items, currentItem }) {
   };
 
   return (
-    <Container backgroundColor="#fcfcfc">
-      <DropdownMenu onClick={handleToggleDropdown}>
-        {selectedText}
-        <img src="/images/caret-down.svg" alt="드롭다운" />
-      </DropdownMenu>
-      {isDropdownOpen && (
-        <SearchContainer>
-          <SearchBar>
-            <input
-              placeholder="Search Symbol"
-              value={searchText}
-              onChange={handleChangeSearchText}
-            />
-            <img src="/images/magnifying-glass.svg" alt="검색" />
-          </SearchBar>
-          {searchResults.map((item) => (
-            <SearchItem
-              key={item}
-              onClick={() => handleClickSearchResult(item)
-              }>
-              {item}
-            </SearchItem>
-          ))}
-        </SearchContainer>
-      )}
-    </Container>
+    <>
+      <h2>{title}</h2>
+      <Container backgroundColor="#fcfcfc">
+        <DropdownMenu onClick={handleToggleDropdown}>
+          {selectedText}
+          <img src="/images/caret-down.svg" alt="드롭다운" />
+        </DropdownMenu>
+        {isDropdownOpen && (
+          <SearchContainer>
+            <SearchBar>
+              <input
+                placeholder="Search Symbol"
+                value={searchText}
+                onChange={handleChangeSearchText}
+              />
+              <img src="/images/magnifying-glass.svg" alt="검색" />
+            </SearchBar>
+            {searchResults.map((item) => (
+              <SearchItem
+                key={item}
+                onClick={() => handleClickSearchResult(item)
+                }>
+                {item}
+              </SearchItem>
+            ))}
+          </SearchContainer>
+        )}
+      </Container>
+    </>
   );
 };
 

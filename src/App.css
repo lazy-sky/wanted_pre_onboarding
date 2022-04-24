@@ -1,3 +1,8 @@
 .App {
+  padding: 16px;
+}
+
+h1, h2 {
   text-align: center;
+  margin-bottom: 8px;
 }

@@ -77,3 +77,4 @@ https://pre-onboarding-lazysky.vercel.app/
 ## TODO
 
 - 렌더링 최적화(메모이제이션)
+  - 아쉽지만 제출시기 가산점만큼의 기술 점수 향상이 있는지 알 수가 없어 `push`는 미뤄두기로 했다.

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
+import { Container } from './Shape';
+
 function Tab({ items, title, currentTabIndex }) {
   const [activeTabIndex, setActiveTabIndex] = useState(currentTabIndex);
   const [previousTabIndex, setPreviousTabIndex] = useState(null);
@@ -13,19 +15,21 @@ function Tab({ items, title, currentTabIndex }) {
   return (
     <>
       <h2>{title}</h2>
-      <TabList>
-        {items.map((item, index) => (
-          <TabItem
-            key={index}
-            index={index}
-            previousTabIndex={previousTabIndex}
-            isActive={activeTabIndex === index}
-            onClick={() => handleClickTab(index)}
-          >
-            {item}
-          </TabItem>
-        ))}
-      </TabList>
+      <Container width="500px">
+        <TabList>
+          {items.map((item, index) => (
+            <TabItem
+              key={item}
+              index={index}
+              previousTabIndex={previousTabIndex}
+              isActive={activeTabIndex === index}
+              onClick={() => handleClickTab(index)}
+            >
+              {item}
+            </TabItem>
+          ))}
+        </TabList>
+      </Container>
     </>
   );
 }

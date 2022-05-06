@@ -28,20 +28,20 @@ function Input({ title }) {
     setIsPasswordView((prev) => !prev)
   }
 
-  const handleBlurEmail = () => {
-    if (!checkEmailValidation() && email.length) {
-      setEmailErrorView(true)
-    } else {
-      setEmailErrorView(false)
-    }
-  }
-
   const checkEmailValidation = () => {
     const emailRegExp =
       // eslint-disable-next-line max-len
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
     return emailRegExp.test(email)
+  }
+
+  const handleBlurEmail = () => {
+    if (!checkEmailValidation() && email.length) {
+      setEmailErrorView(true)
+    } else {
+      setEmailErrorView(false)
+    }
   }
 
   return (
@@ -53,7 +53,6 @@ function Input({ title }) {
           placeholder='E-mail'
           value={email}
           type='email'
-          autoFocus
           onChange={handleChangeInputs}
           onBlur={handleBlurEmail}
         />
@@ -74,11 +73,13 @@ function Input({ title }) {
           type={isPasswordView ? 'text' : 'password'}
           onChange={handleChangeInputs}
         />
-        {isPasswordView ? (
-          <img src='/images/eye.svg' alt='비밀번호 보임' onClick={handleTogglePasswordView} />
-        ) : (
-          <img src='/images/eye-slash.svg' alt='이메일 형식 유효' onClick={handleTogglePasswordView} />
-        )}
+        <button type='button' onClick={handleTogglePasswordView}>
+          {isPasswordView ? (
+            <img src='/images/eye.svg' alt='비밀번호 보임' />
+          ) : (
+            <img src='/images/eye-slash.svg' alt='이메일 형식 유효' />
+          )}
+        </button>
       </InputWrapper>
     </Container>
   )

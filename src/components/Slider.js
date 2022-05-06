@@ -31,9 +31,11 @@ function Slider({ title, basePoints, currentValue }) {
         </ProgressContainer>
         <BasePoints>
           {basePoints.map((point, index) => (
-            <li key={point} onClick={() => handleClickPoint(point)} index={index} value={point}>
-              {point}%
-            </li>
+            <button type='button' onClick={() => handleClickPoint(point)}>
+              <li key={point} index={index} value={point}>
+                {point}%
+              </li>
+            </button>
           ))}
         </BasePoints>
       </Container>

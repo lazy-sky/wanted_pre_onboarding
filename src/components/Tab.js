@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import styled, { css, keyframes } from 'styled-components'
 
-import { Container } from './Shape';
+import { Container } from './Shape'
 
 function Tab({ items, title, currentTabIndex }) {
-  const [activeTabIndex, setActiveTabIndex] = useState(currentTabIndex);
-  const [previousTabIndex, setPreviousTabIndex] = useState(null);
+  const [activeTabIndex, setActiveTabIndex] = useState(currentTabIndex)
+  const [previousTabIndex, setPreviousTabIndex] = useState(null)
 
   const handleClickTab = (index) => {
-    setPreviousTabIndex(activeTabIndex);
-    setActiveTabIndex(index);
-  };
+    setPreviousTabIndex(activeTabIndex)
+    setActiveTabIndex(index)
+  }
 
   return (
     <>
       <h2>{title}</h2>
-      <Container width="500px">
+      <Container width='500px'>
         <TabList>
           {items.map((item, index) => (
             <TabItem
@@ -31,14 +32,20 @@ function Tab({ items, title, currentTabIndex }) {
         </TabList>
       </Container>
     </>
-  );
+  )
+}
+
+Tab.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
+  currentTabIndex: PropTypes.number,
 }
 
 const TabList = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
-`;
+`
 
 const TabItem = styled.li`
   font-weight: bold;
@@ -66,7 +73,7 @@ const TabItem = styled.li`
         animation: ${slide(previousTabIndex, index)} 0.2s linear;
       }
     `}
-`;
+`
 
 const slide = (previousTabIndex, index) => keyframes`
   from {
@@ -75,6 +82,6 @@ const slide = (previousTabIndex, index) => keyframes`
   to {
     transform: translateX(0px);
   }
-`;
+`
 
-export default Tab;
+export default Tab

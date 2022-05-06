@@ -1,55 +1,50 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import styled from 'styled-components'
 
-import { Container } from './Shape';
+import { Container } from './Shape'
 
 function Slider({ title, basePoints, currentValue }) {
-  const [slidePercent, setSlidePercent] = useState(currentValue);
+  const [slidePercent, setSlidePercent] = useState(currentValue)
 
   const handleSlideProgress = (e) => {
-    setSlidePercent(e.target.value);
-  };
+    setSlidePercent(e.target.value)
+  }
 
   const handleClickPoint = (point) => {
-    setSlidePercent(point);
-  };
+    setSlidePercent(point)
+  }
 
   return (
     <>
       <h2>{title}</h2>
-      <Container width="400px">
+      <Container width='400px'>
         <ProgressStatus>
           <b>{slidePercent}</b>
           <span>%</span>
         </ProgressStatus>
         <ProgressContainer>
-          <Progress
-            type="range"
-            value={slidePercent}
-            onChange={handleSlideProgress}
-          />
-          {basePoints
-            .map(point =>
-              <ProgressDot
-                key={point}
-                isFilled={slidePercent >= point}
-              />)}
+          <Progress type='range' value={slidePercent} onChange={handleSlideProgress} />
+          {basePoints.map((point) => (
+            <ProgressDot key={point} isFilled={slidePercent >= point} />
+          ))}
         </ProgressContainer>
         <BasePoints>
           {basePoints.map((point, index) => (
-            <li
-              key={point}
-              onClick={() => handleClickPoint(point)}
-              index={index}
-              value={point}
-            >
+            <li key={point} onClick={() => handleClickPoint(point)} index={index} value={point}>
               {point}%
             </li>
           ))}
         </BasePoints>
       </Container>
     </>
-  );
+  )
+}
+
+Slider.propTypes = {
+  title: PropTypes.string,
+  basePoints: PropTypes.arrayOf(PropTypes.number),
+  currentValue: PropTypes.number,
 }
 
 const ProgressStatus = styled.div`
@@ -70,14 +65,14 @@ const ProgressStatus = styled.div`
   span {
     color: gray;
   }
-`;
+`
 
 const ProgressContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
 const Progress = styled.input`
   position: absolute;
@@ -111,16 +106,14 @@ const Progress = styled.input`
     border-radius: 100%;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   }
-`;
+`
 
 const ProgressDot = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  background-color: ${({ isFilled }) => (isFilled
-    ? 'rgb(16, 175, 175)'
-    : '#ebebeb')};
-`;
+  background-color: ${({ isFilled }) => (isFilled ? 'rgb(16, 175, 175)' : '#ebebeb')};
+`
 
 const BasePoints = styled.ul`
   display: flex;
@@ -143,6 +136,6 @@ const BasePoints = styled.ul`
       background-color: rgb(16, 175, 175);
     }
   }
-`;
+`
 
-export default Slider;
+export default Slider

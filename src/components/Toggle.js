@@ -1,18 +1,15 @@
-import { useState } from 'react';
-import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import styled, { css } from 'styled-components'
 
-import { Container } from './Shape';
+import { Container } from './Shape'
 
-function Toggle({
-  title,
-  items,
-  isDetail,
-}) {
-  const [isDetailSelected, setIsDetailSelected] = useState(isDetail);
+function Toggle({ title, items, isDetail }) {
+  const [isDetailSelected, setIsDetailSelected] = useState(isDetail)
 
   const handleClickToggle = () => {
-    setIsDetailSelected(prev => !prev);
-  };
+    setIsDetailSelected((prev) => !prev)
+  }
 
   return (
     <>
@@ -20,11 +17,7 @@ function Toggle({
       <Container>
         <ToggleSelector>
           {items.map((item, index) => (
-            <ToggleItem
-              key={item}
-              isSelected={isDetailSelected === Boolean(index)}
-              onClick={handleClickToggle}
-            >
+            <ToggleItem key={item} isSelected={isDetailSelected === Boolean(index)} onClick={handleClickToggle}>
               {item}
             </ToggleItem>
           ))}
@@ -32,7 +25,13 @@ function Toggle({
         </ToggleSelector>
       </Container>
     </>
-  );
+  )
+}
+
+Toggle.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.string),
+  isDetail: PropTypes.bool,
 }
 
 const ToggleSelector = styled.ul`
@@ -43,13 +42,13 @@ const ToggleSelector = styled.ul`
   border-radius: 20px;
   background-color: rgb(235, 235, 235);
   cursor: pointer;
-`;
+`
 
 const ToggleItem = styled.li`
   z-index: 100;
   padding: 8px;
-  color: ${({ isSelected }) => isSelected ? 'black' : 'gray'}
-`;
+  color: ${({ isSelected }) => (isSelected ? 'black' : 'gray')};
+`
 
 const FocusCircle = styled.div`
   position: absolute;
@@ -66,6 +65,6 @@ const FocusCircle = styled.div`
       transform: translate(142px, 0);
       transition: all 0.2s linear;
     `}
-`;
+`
 
-export default Toggle;
+export default Toggle

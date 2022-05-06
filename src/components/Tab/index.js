@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-import { Container } from './Shape'
+import { Container } from '../Shape'
 
 function Tab({ items, title, currentTabIndex }) {
   const [activeTabIndex, setActiveTabIndex] = useState(currentTabIndex)

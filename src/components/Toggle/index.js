@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
 
-import { Container } from './Shape'
+import { Container } from '../Shape'
 
 function Toggle({ title, items, isDetail }) {
   const [isDetailSelected, setIsDetailSelected] = useState(isDetail)

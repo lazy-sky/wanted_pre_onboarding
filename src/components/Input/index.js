@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { Container } from './Shape'
+import { Container } from '../Shape'
 
 function Input({ title }) {
   const [inputValues, setInputValues] = useState({

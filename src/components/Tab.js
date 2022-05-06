@@ -47,6 +47,15 @@ const TabList = styled.ul`
   list-style: none;
 `
 
+const slide = (previousTabIndex, index) => keyframes`
+  from {
+    transform: translateX(${(previousTabIndex - index) * 100}%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+`
+
 const TabItem = styled.li`
   font-weight: bold;
   padding: 12px;
@@ -73,15 +82,6 @@ const TabItem = styled.li`
         animation: ${slide(previousTabIndex, index)} 0.2s linear;
       }
     `}
-`
-
-const slide = (previousTabIndex, index) => keyframes`
-  from {
-    transform: translateX(${(previousTabIndex - index) * 100}%);
-  }
-  to {
-    transform: translateX(0px);
-  }
 `
 
 export default Tab

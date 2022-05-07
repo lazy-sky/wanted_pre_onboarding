@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
+import { DropDownImage, MagnifyingGlassImage } from '../../assets/images/svgs'
 import { Container } from '../Shape'
 import styles from './Dropdown.module.scss'
 
@@ -33,13 +34,13 @@ function Dropdown({ title, items, currentItem }) {
       <Container backgroundColor='#fcfcfc'>
         <button type='button' className={styles.dropdownMenu} onClick={handleToggleDropdown}>
           <div>{selectedText}</div>
-          <img src='/images/caret-down.svg' alt='드롭다운' />
+          <DropDownImage className={styles.image} />
         </button>
         {isDropdownOpen && (
           <ul className={styles.searchContainer}>
             <div className={styles.searchBar}>
               <input placeholder='Search Symbol' value={searchText} onChange={handleChangeSearchText} />
-              <img src='/images/magnifying-glass.svg' alt='검색' />
+              <MagnifyingGlassImage className={styles.image} />
             </div>
             {searchResults.map((item) => (
               <li className={styles.searchItem} key={item}>

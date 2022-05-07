@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
+import { CheckGrayImage, CheckGreenImage, EyeImage, EyeSlashImage } from '../../assets/images/svgs'
 import { Container } from '../Shape'
 import styles from './Input.module.scss'
 
@@ -55,9 +56,9 @@ function Input({ title }) {
           onBlur={handleBlurEmail}
         />
         {checkEmailValidation() ? (
-          <img src='/images/check_green.svg' alt='이메일 형식 유효' />
+          <CheckGreenImage className={styles.image} />
         ) : (
-          <img src='/images/check_gray.svg' alt='이메일 형식 오류' />
+          <CheckGrayImage className={styles.image} />
         )}
       </div>
 
@@ -72,11 +73,7 @@ function Input({ title }) {
           onChange={handleChangeInputs}
         />
         <button type='button' onClick={handleTogglePasswordView}>
-          {isPasswordView ? (
-            <img src='/images/eye.svg' alt='비밀번호 보임' />
-          ) : (
-            <img src='/images/eye-slash.svg' alt='이메일 형식 유효' />
-          )}
+          {isPasswordView ? <EyeImage className={styles.image} /> : <EyeSlashImage className={styles.image} />}
         </button>
       </div>
     </Container>

@@ -1,0 +1,87 @@
+.progress {
+  &Status {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+
+    b {
+      margin-right: 24px;
+      font-size: larger;
+    }
+
+    span {
+      color: rgb(128, 128, 128);
+    }
+  }
+
+  &Container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    appearance: none;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background-color: rgb(16, 175, 175);
+      border: 4px solid white;
+      border-radius: 100%;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 30%);
+    }
+
+    &::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      background-color: rgb(16, 175, 175);
+      border: 4px solid white;
+      border-radius: 100%;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 30%);
+    }
+  }
+
+  &Dot {
+    width: 20px;
+    height: 20px;
+    background-color: #ebebeb;
+    border-radius: 100%;
+
+    &.isFilled {
+      background-color: rgb(16, 175, 175);
+    }
+  }
+}
+
+.basePoints {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  list-style: none;
+
+  button {
+    min-width: 50px;
+    padding: 4px;
+    font-size: small;
+    color: rgb(128, 128, 128);
+    background-color: #ebebeb;
+    border-radius: 12px;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+      background-color: rgb(16, 175, 175);
+    }
+  }
+}

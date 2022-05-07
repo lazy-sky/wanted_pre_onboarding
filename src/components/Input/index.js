@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import styled from 'styled-components'
 
 import { Container } from '../Shape'
+import styles from './Input.module.scss'
 
 function Input({ title }) {
   const [inputValues, setInputValues] = useState({
@@ -45,12 +45,12 @@ function Input({ title }) {
   return (
     <Container>
       <h2>{title}</h2>
-      <InputWrapper>
+      <div className={styles.inputWrapper}>
         <input
           name='email'
           placeholder='E-mail'
           value={email}
-          type='email'
+          type='text'
           onChange={handleChangeInputs}
           onBlur={handleBlurEmail}
         />
@@ -59,11 +59,11 @@ function Input({ title }) {
         ) : (
           <img src='/images/check_gray.svg' alt='이메일 형식 오류' />
         )}
-      </InputWrapper>
+      </div>
 
-      {!!email.length && emailErrorView && <ErrorMessage>invalid e-mail address.</ErrorMessage>}
+      {!!email.length && emailErrorView && <p className={styles.errorMessage}>invalid e-mail address.</p>}
 
-      <InputWrapper type='password'>
+      <div className={styles.inputWrapper} type='password'>
         <input
           name='password'
           placeholder='Password'
@@ -78,7 +78,7 @@ function Input({ title }) {
             <img src='/images/eye-slash.svg' alt='이메일 형식 유효' />
           )}
         </button>
-      </InputWrapper>
+      </div>
     </Container>
   )
 }
@@ -86,30 +86,5 @@ function Input({ title }) {
 Input.propTypes = {
   title: PropTypes.string,
 }
-
-const InputWrapper = styled.div`
-  position: relative;
-  margin: 24px auto 0;
-  text-align: center;
-
-  input {
-    width: 90%;
-    padding: 8px;
-  }
-
-  img {
-    position: absolute;
-    right: 20px;
-    top: 9px;
-    width: 16px;
-    cursor: ${({ type }) => (type === 'password' ? 'pointer' : 'inherit')};
-  }
-`
-
-const ErrorMessage = styled.p`
-  font-size: smaller;
-  margin-left: 8px;
-  color: red;
-`
 
 export default Input
